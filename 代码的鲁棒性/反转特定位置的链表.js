@@ -55,4 +55,5 @@ b.next=c
 c.next=d
 d.next=e
 console.log(reverseBetweenMN(a,2,4))
-// reverseBetween(a,2,4)
+//
+console.log(reverseBetween(a,2,4))
