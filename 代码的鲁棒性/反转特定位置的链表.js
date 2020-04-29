@@ -30,11 +30,20 @@ function reverseBetween(head,m,n){
     return head
 }
 function reverseBetweenMN(head,m,n){
-    var pre=null
-    for()
-    for(var i=m;i<n;i++){
-        var 
+    var dummy=new ListNode(-1)
+    dummy.next=head
+    var pre=dummy
+    for(var i=1;i<m;i++){
+        pre=pre.next
     }
+    head=pre.next
+    for(var i=m;i<n;i++){
+        var nxt=head.next
+        head.next=nxt.next
+        nxt.next=pre.next
+        pre.next=nxt
+    }
+    return dummy.next
 }
 let a=new ListNode(1)
 let b=new ListNode(2)
@@ -45,5 +54,5 @@ a.next=b
 b.next=c
 c.next=d
 d.next=e
-console.log(reverseBetween(a,2,4))
+console.log(reverseBetweenMN(a,2,4))
 // reverseBetween(a,2,4)
