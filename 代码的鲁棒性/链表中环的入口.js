@@ -22,7 +22,7 @@ function findCircle(head){
                 length++
             }
             console.log(length)
-            break;
+            break
         }
     }
     fast=head
