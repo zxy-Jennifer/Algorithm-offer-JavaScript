@@ -41,4 +41,4 @@ function print(arr){
     }
     return parseInt(res.join(''))
 }
-console.log(printToN(1))
+console.log(printToN(2))
