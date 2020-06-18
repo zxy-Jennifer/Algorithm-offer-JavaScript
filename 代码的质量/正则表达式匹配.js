@@ -2,10 +2,10 @@ function match(s,p){
     if(s==null||p==null){
         return false
     }else {
-        var arrs=s.split('')
-        var arrp=p.split('')
-        console.log(arrs,arrp)
-        return matchCore(arrs,arrp,0,0)
+        // var arrs=s.split('')
+        // var arrp=p.split('')
+        // console.log(arrs,arrp)
+        return matchCore(s,p,0,0)
     }
 }
 function matchCore(str,pattern,i,j){
@@ -32,6 +32,6 @@ function matchCore(str,pattern,i,j){
     return false;
 }
 
-var str='bab'
-var pattern='baab'
+var str=''
+var pattern='.'
 console.log(match(str,pattern))
