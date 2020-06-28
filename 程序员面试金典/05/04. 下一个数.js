@@ -1,6 +1,9 @@
 
-
-function findClosedNumbers(num) {
+/**
+ * 
+ * @param {*} num 
+ */
+function findClosedNumbers1(num) {
     let min = -1
     let max = -1
     let str = num.toString(2)
@@ -44,6 +47,98 @@ function findClosedNumbers(num) {
     min = min===-1?-1:parseInt(min,2)
     return [max, min]
 } 
+
+/**
+ * 暴力
+ * @param {*} num 
+ */
+function findClosedNumbers2(num) {
+    let max = -1, min = -1
+    let left = Math.floor(num / 2)
+    let right = num * 2
+    let i = num-1, j=num+1
+    let NumOne = countOne(num)
+    while(i>=left || j<=right) {
+        if(countOne(i) === NumOne) {
+            min = i
+            i = left
+        }
+        i--
+        if(countOne(j) === NumOne) {
+            max = j
+            j = right+1
+        }
+        j++
+    }
+    return [max, min]
+
+    /**
+     * 计算num中1的个数
+     * @param {*} num 
+     */
+    function countOne(num) {
+        let res = 0
+        while(num) {
+            if(num&1)res++
+            num = num >> 1
+        }
+        return res
+    }
+}
+
+function findClosedNumbers(num) {
+    console.log(num.toString(2))
+    function getSmall(num) {
+        let c = num, c1=0, c0=0, m=0
+        while(c) {
+            m++
+            if(c&1) {
+                c1++
+            }else {
+                c0++
+                // 遇到 10 
+                if(c&2) {
+                    m++
+                    c1++
+                    break
+                }
+            }
+            c>>=1
+        }
+        if( m===c1 ) return -1
+        // p为非拖尾的1的位置
+        let p = c0+c1
+        // p以及p右边所有位清零
+        num &= ~((1<<p)-1)
+        // 在紧邻p的右方插入 c1+1 个 1
+        // ((1<<p-1) - 1)：把后 c0+c1 位变为 1
+        // ~((1<<(c0-1)) -1)：把后 c0 位变为 0
+        return num|(((1<<p-1) - 1) & ~((1<<(c0-1)) -1));
+    }
+    
+    function getBig(num) {
+        let c = num, c0=0,c1=0
+        while(c&&(c&1) === 0) {
+            c0++
+            c = c >> 1
+        }
+        while(c&1) {
+            c1++
+            c = c >> 1
+        }
+        if(c0+c1 === 32 || c0+c1 === -1)return -1
+        let p = c0+c1
+        // p以及p右边所有位清零
+        num = num & ~((1<<p)-1)
+        // 把后 c1 位变成 1
+        num = num | ((1<<(c1-1)) -1)
+        // 
+        return num | (1<<p)
+    }
+    let big = getBig(num)
+    let small = getSmall(num)
+    return [big, small]
+}
     //  2 4 8 6
-let num = 6
+let num = 33
 console.log(findClosedNumbers(num))                          
