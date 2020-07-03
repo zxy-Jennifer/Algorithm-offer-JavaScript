@@ -15,7 +15,7 @@ function getLeastNumbers2(arr,k) {
  * @param {*} arr 
  * @param {*} k 
  */
-function getLeastNumbers(arr,k) {
+function getLeastNumbers3(arr,k) {
     if(arr===null||arr.length<=0) {
         return []
     }
@@ -45,14 +45,14 @@ function getLeastNumbers(arr,k) {
  * @param {*} end 
  */
 function partiton(arr,start,end) {
-    let k = arr[start]
+    let k = arr[start] // 轴值
     let left = start+1
     let right = end
     while(1) {
-        while(left<=end && arr[left]<=k) {
+        while(left <= end && arr[left] <= k) {
             left++
         }
-        while(right>=start+1 && arr[right]>=k) {
+        while(right >= start+1 && arr[right] >= k) {
             right--
         }
         if(left>=right){
@@ -66,19 +66,12 @@ function partiton(arr,start,end) {
     return right
 }
 
-// while(i<j) {
-//     if(i<j && arr[j]>k) {
-//         j--
-//     }
-//     if(i<j && arr[i]<k) {
-//         i++
-//     }
-//     [arr[i],arr[j]] = [arr[j],arr[i]]
-// }
 let arrr = [0,0,2,3,2,1,1,2,0,4]
-console.log(partiton(arrr,0,9))
-console.log(arrr)
+// console.log(partiton(arrr,0,9))
+// console.log(arrr)
 
 // [0,1,2,1], k = 1
 let arr = [0,0,2,3,2,1,1,2,0,4]
-console.log(getLeastNumbers(arr,10))  //  [0]
+console.log(getLeastNumbers1(arrr, 5))  //  [0]
+console.log(getLeastNumbers2(arr, 5))  //  [0]
+console.log(getLeastNumbers3(arr, 5))  //  [0]

@@ -15,10 +15,12 @@ function generateParenthesis1(n) {
 
         if(left > right)return
 
+        // 还可以放左括号
         if(left > 0) {
             recur(left-1,right,str+'(')
         }
 
+        // 还可以放右括号
         if(right > 0) {
             recur(left,right-1,str+')')
         }
@@ -49,4 +51,4 @@ function generateParenthesis(n) {
     return res[n]
 }
 
-console.log(generateParenthesis(3))
+console.log(generateParenthesis1(3))

@@ -88,6 +88,6 @@ function HeapSort(arr) {
 }
 
 let arr = [3,7,1,2,8]
-console.log(HeapSort(arr))
+// console.log(HeapSort(arr))
 
 module.exports = Heap

@@ -1,4 +1,8 @@
 
+/**
+ * 
+ * @param {*} nums 
+ */
 function nextPermutation(nums) {
     let i = nums.length-2
     while(i>=0 && nums[i+1]<=nums[i]) {
@@ -20,5 +24,5 @@ function nextPermutation(nums) {
     }
     return nums
 }
-let nums = [1,3,2]
+let nums = [1,5,1]
 console.log(nextPermutation(nums))

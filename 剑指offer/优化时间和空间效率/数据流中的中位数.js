@@ -1,4 +1,4 @@
-const Heap = require('../Sort/Heap')
+const Heap = require('../../Sort/Heap')
 // import {Heap} from '../Sort/Heap'
 class MedianFinder1 {
     constructor() {
