@@ -32,5 +32,5 @@ function calculate(s) {
 /**
  * '3*4 - 5*9 /2 *2+ 3'
  */
-let s = '3*4 - 5*9 /2 *2+ 3'
+let s = '3*4 - 1*9 /2 *2+ 3'
 console.log(calculate(s))
