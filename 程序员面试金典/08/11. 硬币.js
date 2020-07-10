@@ -41,4 +41,4 @@ function waysToChange(n) {
     return res
 }
 
-console.log(waysToChange(61))
+console.log(waysToChange(11))
