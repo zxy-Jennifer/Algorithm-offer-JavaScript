@@ -62,4 +62,43 @@ function findReverseNum(nums,start,end) {
     return num+leftNum+rightNum
 }
 
-console.log(reversePairs([7,5,6,4]))
+function reversePairs2(nums) {
+    if(nums == null || nums.length == 1) return 0;
+    let result = 0
+    mergeSort(nums);
+    return result;
+
+    function mergeSort(nums) {
+        let len = nums.length
+        let mid = Math.floor(len/2)
+        if(len<2)return nums
+        let left = nums.slice(0,mid)
+        let right = nums.slice(mid)
+        return merge(mergeSort(left), mergeSort(right))
+    
+    
+        // 合并两个有序列表
+        function merge(left,right) {
+            let res = []
+            while(left.length && right.length) {
+                if(left[0]<=right[0]) {
+                    res.push(left.shift())
+                }else {
+                    result+=left.length
+                    console.log(result, left, right)
+                    res.push(right.shift())
+                }
+            }
+            while(left.length) {
+                res.push(left.shift())
+            }
+            while(right.length) {
+                res.push(right.shift())
+            }
+            return res
+        }
+    }
+}
+
+console.log(reversePairs2([2,5,6,4]))
+console.log(reversePairs([2,5,6,4]))

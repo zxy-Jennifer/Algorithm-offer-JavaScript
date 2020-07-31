@@ -41,7 +41,27 @@ function sumNumbers1(root) {
         return recur(root.left, temp) + recur(root.right, temp)
     }
 }
+function sumNumbers2(root) {
+    let res = 0
+    let path = []
+    recur(root, path)
+    return res
 
+    function recur(root, path) {
+        if(!root.left && !root.right) {
+            path.push(root.val)
+            let num = parseInt(path.join(''))
+            path.pop()
+            console.log(res, num)
+            res+=num
+            return
+        }
+        path.push(root.val)
+        recur(root.left, path)
+        recur(root.right, path)
+        path.pop()
+    }
+}
 let a=new TreeNode(1)
 let b=new TreeNode(2)
 let c=new TreeNode(3)
@@ -50,10 +70,12 @@ let e=new TreeNode(5)
 let f=new TreeNode(6)
 let g=new TreeNode(7)
 a.left=b
-// a.right=c
+a.right=c
 // b.left=d
 // b.right=e
 // c.left=f
 // c.right=g
 
-console.log(sumNumbers(null))
+// console.log(sumNumbers(a))
+// console.log(sumNumbers1(a))
+console.log(sumNumbers2(a))

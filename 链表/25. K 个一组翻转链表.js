@@ -6,18 +6,6 @@ class ListNode {
 }
 
 function reverseKGroup(head, k) {
-    const myReverse = (head, tail) => {
-        let prev = tail.next;
-        let p = head;
-        while (prev !== tail) {
-            const nex = p.next;
-            p.next = prev;
-            prev = p;
-            p = nex;
-        }
-        return [tail, head];
-    }
-
     const hair = new ListNode(0);
     hair.next = head;
     let pre = hair;
@@ -40,18 +28,17 @@ function reverseKGroup(head, k) {
         head = tail.next;
     }
     return hair.next;
-    
 
-    function reverseList(start, end) {
-        let node = start
-        let pre = end.next
-        while(pre !== end) {
-            let pnext = node.next
-            node.next = pre
-            pre = node
-            node = pnext
+    function myReverse(head, tail) {
+        let prev = tail.next;
+        let p = head;
+        while (prev !== tail) {
+            const nex = p.next;
+            p.next = prev;
+            prev = p;
+            p = nex;
         }
-        return [end, start]
+        return [tail, head];
     }
 }
 

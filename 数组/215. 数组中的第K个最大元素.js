@@ -67,4 +67,4 @@ function findKthLargest2(nums, k) {
 }
 
 let nums = [3,2,1,5,6,4] , k = 6
-console.log(findKthLargest2(nums, k))
+console.log(findKthLargest(nums, k))

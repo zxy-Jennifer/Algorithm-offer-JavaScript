@@ -12,9 +12,9 @@ function restoreIpAddresses(s) {
     /**
      * 
      * @param {*} index 当前遍历到s的索引
-     * @param {*} k ip地址的第k位
+     * @param {*} k ip地址的第k位(共四位)
      * @param {*} s 
-     * @param {*} path ip地址的第k位为 path
+     * @param {*} path ip地址的第k位为 path[k]
      * @param {*} res 
      */
     function recur(index, k, s, path, res) {

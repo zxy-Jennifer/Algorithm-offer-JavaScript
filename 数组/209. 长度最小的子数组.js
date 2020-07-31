@@ -23,9 +23,15 @@ function minSubArrayLen1(s, nums) {
     return res<=len?res:0
 }
 
+/**
+ * 前缀和 + 二分查找
+ * @param {*} s 
+ * @param {*} nums 
+ */
 function minSubArrayLen2(s, nums) {
     let len = nums.length
     let res = Infinity
+    //  sums[i] 表示从nums[0] 到 nums[i−1] 的元素和
     let sums = new Array(len+1)
     sums[0] = 0
     for(let i=1; i<=len; i++) {
@@ -46,6 +52,13 @@ function minSubArrayLen2(s, nums) {
     return res<=len?res:0
 
 
+    /**
+     * 二分查找大于等于某个数的第一个位置
+     * @param {*} l 
+     * @param {*} r 
+     * @param {*} target 
+     * @param {*} arr 
+     */
     function binSearch(l, r, target, arr) {
         let mid = 0
         while(l < r) {
@@ -60,6 +73,11 @@ function minSubArrayLen2(s, nums) {
     } 
 }
 
+/**
+ * 双指针
+ * @param {*} s 
+ * @param {*} nums 
+ */
 function minSubArrayLen(s, nums) {
     let len = nums.length
     if(len <= 0)return 0
@@ -70,8 +88,10 @@ function minSubArrayLen(s, nums) {
         while(sum>=s) {
             res = Math.min(res, j-i+1)
             sum-=nums[i]
+            // 头指针后移
             i++
         }
+        // 尾指针后移
         j++
     }
     return res<=len?res:0

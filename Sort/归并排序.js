@@ -11,6 +11,7 @@ function mergeSort(nums) {
     return merge(mergeSort(left), mergeSort(right))
 
 
+    // 合并两个有序列表
     function merge(left,right) {
         let res = []
         while(left.length && right.length) {
