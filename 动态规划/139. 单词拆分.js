@@ -43,8 +43,8 @@ function wordBreak(s, wordDict) {
 }
 
 // let s = "catsandog", wordDict = ["cats", "dog", "sand", "and", "cat"]
-let s = "ccbb", wordDict = ["bc","cb"]
-// let s = "applepenapple", wordDict = ["apple", "pen"]
+// let s = "ccbb", wordDict = ["bc","cb"]
+let s = "applepenapple", wordDict = ["apple", "pen"]
 // let s = "leetcode", wordDict = ["leet", "code"]
 // let s = "accc", wordDict = ["cc","ac"]
 console.log(wordBreak(s, wordDict))

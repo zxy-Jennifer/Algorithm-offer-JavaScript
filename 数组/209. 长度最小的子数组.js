@@ -1,5 +1,5 @@
 /**
- * 
+ * 滑动窗口
  * @param {*} s 
  * @param {*} nums 
  */
@@ -31,21 +31,18 @@ function minSubArrayLen1(s, nums) {
 function minSubArrayLen2(s, nums) {
     let len = nums.length
     let res = Infinity
-    //  sums[i] 表示从nums[0] 到 nums[i−1] 的元素和
     let sums = new Array(len+1)
     sums[0] = 0
+    // 计算前缀和   sums[i]表示从nums[0]到nums[i−1]的元素和
     for(let i=1; i<=len; i++) {
         sums[i] = sums[i-1] + nums[i-1]
     }
-    // console.log(sums)
 
     for(let i=1; i<=len; i++) {
         let target = sums[i-1]+s
+        // 计算sum中从i开始大于等于target的第一个数的位置
         let bound = binSearch(i, len, target, sums)
-        // console.log(i, bound)
-        if(bound<0) {
-            bound = -bound-1
-        } else if(bound<=len) {
+        if(bound>=0 && bound<=len) {
             res = Math.min(res, bound-i+1)
         }
     }
@@ -72,7 +69,6 @@ function minSubArrayLen2(s, nums) {
         return arr[l]>=target?l:-1
     } 
 }
-
 /**
  * 双指针
  * @param {*} s 
@@ -97,5 +93,26 @@ function minSubArrayLen(s, nums) {
     return res<=len?res:0
 }
 
-let s = 9, nums = [1,2,3,4,5]
+/**
+ * 
+ * @param {*} s 
+ * @param {*} nums 
+ */
+function minSubArrayLen(s, nums) {
+    let len = nums.length
+    if(len <= 0)return 0
+    let res = Infinity
+    let i=0, j=0, sum=0
+    while(j<len) {
+        sum+=nums[j]
+        while(sum>=s) {
+            res = Math.min(res, j-i+1)
+            sum-=nums[i++]
+        }
+        j++
+    }
+    return res<=len?res:0
+}
+
+let s = 13, nums = [1,2,3,4,5]
 console.log(minSubArrayLen(s, nums))

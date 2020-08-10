@@ -9,7 +9,7 @@ function canPartition(nums) {
     let target = Math.floor(sum/2)
     if(target*2 !== sum)return false
     // dp[i][j]：从数组的 [0, i] 这个子区间内挑选一些正整数，每个数只能用一次，使得这些数的和恰好等于 j。
-    let dp = Array.from(new Array(len), ()=>new Array(target+1))
+    let dp = Array.from(new Array(len), ()=>new Array(target+1).fill(false))
     if(nums[0]<target) dp[0][0] = true
     for(let i=1; i<len; i++) {
         for(let j=1; j<=target; j++) {
@@ -19,10 +19,9 @@ function canPartition(nums) {
             }
         }
     }
-    console.log('dp')
     console.log(dp)
     return dp[len-1][target]
 }
 
-let nums = [1,5,11,5]
+let nums = [1, 2, 3, 6]
 console.log(canPartition(nums))
