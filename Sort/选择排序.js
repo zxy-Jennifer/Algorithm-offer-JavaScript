@@ -12,9 +12,6 @@ function selectSort(nums){
                 minIndex = j
             }
         }
-        // let temp = nums[i]
-        // nums[i] = nums[minIndex]
-        // nums[minIndex] = temp
         [nums[i],nums[minIndex]] = [nums[minIndex],nums[i]]
     }
     return nums

@@ -6,14 +6,14 @@
  */
 function bubbleSort(nums) {
     let flag = false
+    // i控制比较的轮数
     for(let i=0;i<nums.length-1;i++) {
         flag = false
-        for(let j=1;j<nums.length-i;j++){
+        // j是比较的位置
+        for(let j=1; j<nums.length-i; j++){
             if(nums[j-1]>nums[j]) {
-                flag = true
-                let tmp = nums[j]
-                nums[j] = nums[j-1]
-                nums[j-1] = tmp
+                flag = true;
+                [nums[j], nums[j-1]] = [nums[j-1], nums[j]];
             }
         }
         if(!flag){

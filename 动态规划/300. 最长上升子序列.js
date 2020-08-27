@@ -27,6 +27,7 @@ function lengthOfLIS1(nums) {
 function lengthOfLIS(nums) {
     let len = nums.length
     if(len<=0)return 0
+    // dp：单调栈
     let dp = [0, nums[0]]
     let res = 1
     for(let i=1; i<len; i++) {
