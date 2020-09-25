@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
  *
  * @param {*} root
@@ -37,3 +38,21 @@ function findMode(root) {
     }
   }
 }
+=======
+/**
+ * 
+ * @param {*} root 
+ */
+function findMode(root) {
+    let res = []
+    if (!root) {
+        return res
+    }
+
+    function backTrack(node, num) {
+        if (!node) {
+
+        }
+    }
+}
+>>>>>>> 259f696d6c2c78bfc3f96aa9d579f538eef1beef

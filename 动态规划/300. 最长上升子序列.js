@@ -23,23 +23,19 @@ function lengthOfLIS11(nums) {
 
 function lengthOfLIS12(nums) {
     let len = nums.length
-    if (len <= 0) {
-        return 0
-    }
-    let dp = new Array(len).fill(0)
-    dp[0] = 1
-    max = 1
-    for (let i = 1; i < len; i++) {
-        let maxVal = 0
+    let dp = new Array(len).fill(1)
+    let res = 1
+    for (let i = 0; i < len; i++) {
+        let maxVal = 1
         for (let j = 0; j < i; j++) {
-            if (nums[i] > nums[j]) {
-                maxVal = Math.max(maxVal, dp[j])
+            if (nums[j] < nums[i]) {
+                maxVal = Math.max(dp[j] + 1, maxVal)
             }
         }
-        dp[i] = maxVal + 1
-        max = Math.max(max, dp[i])
+        dp[i] = maxVal
+        res = Math.max(res.maxVal)
     }
-    return max
+    return res
 }
 /**
  * 贪心+二分
@@ -70,34 +66,35 @@ function lengthOfLIS21(nums) {
             dp[pos + 1] = nums[i]
         }
     }
-    // console.log(dp)
+    console.log(dp)
     return res
 }
 
 function lengthOfLIS22(nums) {
     let len = nums.length
-    let stack = [0, nums[0]]
+    if (len <= 0) return 0
     let res = 1
+    let dp = new Array(len + 1).fill(0)
+    dp[1] = nums[0]
     for (let i = 1; i < len; i++) {
-        if (nums[i] > stack[res]) {
-            stack[++res] = nums[i]
+        if (nums[i] > dp[res]) {
+            dp[++res] = nums[i]
         } else {
-            let left = 1,
-                right = res,
-                pos = 0
-            while (left <= right) {
-                let mid = left + Math.floor((right - left) / 2)
-                if (stack[mid] < nums[i]) {
-                    pos = mid
-                    left = mid + 1
+            let l = 1,
+                r = res
+            while (l <= r) {
+                let mid = Math.floor((l + r) / 2)
+                if (dp[mid] < nums[i]) {
+                    l = mid + 1
                 } else {
-                    right = mid - 1
+                    r = mid - 1
                 }
             }
-            stack[pos + 1] = nums[i]
+            dp[l] = nums[i]
         }
     }
+    console.log(dp)
     return res
 }
-let nums = [1, 3, 6, 7, 9, 4, 5, 6, 7]
+let nums = [10, 9, 2, 5, 3, 4]
 console.log(lengthOfLIS22(nums))
